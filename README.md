@@ -13,10 +13,11 @@ Senior backend engineer based in Bengaluru. I build distributed systems, push co
 - Security at the lowest layer — SSRF, HMAC+nonce webhooks, Fernet, fail-closed boot
 
 #### Building in public
+- [`beacon`](https://github.com/prajwalmahajan101/beacon) — self-hosted OpenTelemetry-native observability platform · M0 contract frozen ([`v0.1-m0`](https://github.com/prajwalmahajan101/beacon/releases/tag/v0.1-m0)) · M1 (Java SDK) in progress
 - [`portfolio`](https://github.com/prajwalmahajan101/portfolio) — personal site · [live](https://portfolio-prajwal-mahajan.vercel.app)
 - [`django_boilerplate`](https://github.com/prajwalmahajan101/django_boilerplate) — production-grade Django 6 + DRF starter with resilience decorators and structured envelopes
+- [`fastapi_boilerplate`](https://github.com/prajwalmahajan101/fastapi_boilerplate) — production-grade FastAPI + async SQLAlchemy starter with the same resilience kernel
 - [`pomban`](https://github.com/prajwalmahajan101/pomban) — keyboard-driven Pomodoro TUI with kanban + stats (Textual)
-- [`nvim_config`](https://github.com/prajwalmahajan101/nvim_config) — LazyVim config tuned for Python/Go/Java, ~60ms cold start
 
 #### Reach me
 - Portfolio: https://portfolio-prajwal-mahajan.vercel.app
