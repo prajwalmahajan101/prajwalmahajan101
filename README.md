@@ -2,7 +2,7 @@
 
 Senior backend engineer based in Bengaluru. I build distributed systems, push correctness invariants into Postgres, and ship LLM-powered services in production.
 
-**Currently:** Lead architect at [Optimo Capitals](https://optimocapitals.com) — co-lending platform, dashboard platform (OptiView), AWS Lambda services, AA-consent ingestion.
+**Currently:** Lead architect at [Optimo Capitals](https://optimocapital.in/) — co-lending platform, dashboard platform (OptiView), AWS Lambda services, AA-consent ingestion.
 
 **Previously:** Backend lead at Viamagus on Quason (VDA 5050 fleet backbone, 100+ AMRs at 10k msgs/sec) and Synthia (RAG legal assistant).
 
