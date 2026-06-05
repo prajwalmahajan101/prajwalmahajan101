@@ -1,0 +1,25 @@
+name: Latest blog post workflow
+
+on:
+  schedule:
+    - cron: "0 3 * * *"
+  workflow_dispatch:
+
+permissions:
+  contents: write
+
+jobs:
+  update-readme-with-blog:
+    name: Sync latest Hashnode posts to README
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+
+      - name: Pull in latest posts
+        uses: gautamkrishnar/blog-post-workflow@v1
+        with:
+          feed_list: "https://prajwalmahajan101.hashnode.dev/rss.xml"
+          max_post_count: 4
+          commit_message: "chore: sync latest blog posts"
+          template: "- [$title]($url) <sub>· $date</sub>"
+          date_format: "mmm d, yyyy"
