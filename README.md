@@ -14,7 +14,7 @@ Senior backend engineer based in Bengaluru. I build distributed systems, push co
 
 #### Building in public
 - [`beacon`](https://github.com/prajwalmahajan101/beacon) — self-hosted OpenTelemetry-native observability platform · M0 contract frozen ([`v0.1-m0`](https://github.com/prajwalmahajan101/beacon/releases/tag/v0.1-m0)) · M1 (Java SDK) in progress
-- [`BookReader`](https://github.com/prajwalmahajan101/BookReader) — terminal EPUB reader and personal library (Textual, SQLite-backed, inline kitty/sixel images, two-page mode, per-book bookmarks + stats) · 4 phases shipped across 40 atomic commits on 11 feature branches
+- [`BookReader`](https://github.com/prajwalmahajan101/BookReader) — terminal EPUB reader and personal library (Textual, SQLite-backed, inline kitty/sixel images, two-page mode, per-book bookmarks + stats, collections + wishlist overviews) · Phases 1–4 shipped across 45+ atomic commits on 12 feature branches
 - [`portfolio`](https://github.com/prajwalmahajan101/portfolio) — personal site · [live](https://portfolio-prajwal-mahajan.vercel.app)
 - [`django_boilerplate`](https://github.com/prajwalmahajan101/django_boilerplate) — production-grade Django 6 + DRF starter with resilience decorators and structured envelopes
 - [`fastapi_boilerplate`](https://github.com/prajwalmahajan101/fastapi_boilerplate) — production-grade FastAPI + async SQLAlchemy starter with the same resilience kernel
