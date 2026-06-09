@@ -13,7 +13,7 @@ jobs:
     name: Sync latest Hashnode posts to README
     runs-on: ubuntu-latest
     steps:
-      - uses: actions/checkout@v4
+      - uses: actions/checkout@v5
 
       - name: Pull in latest posts
         uses: gautamkrishnar/blog-post-workflow@v1
@@ -23,3 +23,9 @@ jobs:
           commit_message: "chore: sync latest blog posts"
           template: "- [$title]($url) <sub>· $date</sub>"
           date_format: "mmm d, yyyy"
+          # Hashnode's CDN 403s the default "rss-parser" UA. Use a real
+          # browser UA so the feed loads. Two retries ride out transient
+          # CDN flakes without making the job noisy.
+          user_agent: "Mozilla/5.0 (X11; Linux x86_64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/120.0.0.0 Safari/537.36"
+          retry_count: 3
+          retry_wait_time: 5
