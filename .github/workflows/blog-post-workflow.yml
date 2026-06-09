@@ -15,7 +15,12 @@ jobs:
     steps:
       - uses: actions/checkout@v5
 
+      # The action treats any single-feed failure as fatal. Hashnode's
+      # CDN occasionally 429s, which kills the run even when dev.to has
+      # already committed an updated README. continue-on-error keeps the
+      # job green while preserving the partial-sync behaviour.
       - name: Pull in latest posts
+        continue-on-error: true
         uses: gautamkrishnar/blog-post-workflow@v1
         with:
           # dev.to is primary now; Hashnode kept as secondary so older
@@ -25,12 +30,9 @@ jobs:
           commit_message: "chore: sync latest blog posts"
           template: "- [$title]($url) <sub>· $date</sub>"
           date_format: "mmm d, yyyy"
-          # Don't fail the whole run when one feed hiccups (Hashnode's CDN
-          # occasionally 429s). The other feed still updates the README.
-          disable_errors: true
           # Hashnode's CDN 403s the default "rss-parser" UA. Use a real
-          # browser UA so the feed loads. Two retries ride out transient
-          # CDN flakes without making the job noisy.
+          # browser UA so the feed loads. Three retries ride out transient
+          # CDN flakes (combined with the longer wait below).
           user_agent: "Mozilla/5.0 (X11; Linux x86_64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/120.0.0.0 Safari/537.36"
           retry_count: 3
-          retry_wait_time: 5
+          retry_wait_time: 10
