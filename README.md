@@ -45,10 +45,10 @@ Senior backend engineer (Bengaluru) — distributed fintech, robotics, and AI-in
 </details>
 
 #### Writing & web
-- Long-form at [prajwalmahajan101.hashnode.dev](https://prajwalmahajan101.hashnode.dev) — backend, distributed systems, AWS · source markdown in [`hashnode`](https://github.com/prajwalmahajan101/hashnode)
+- Long-form at [dev.to/prajwalmahajan101](https://dev.to/prajwalmahajan101) and [prajwalmahajan101.hashnode.dev](https://prajwalmahajan101.hashnode.dev) — backend, distributed systems, AWS · source markdown in [`blog-posts`](https://github.com/prajwalmahajan101/blog-posts) (split into `devto/` and `hashnode/`)
 - [`portfolio`](https://github.com/prajwalmahajan101/portfolio) — personal site · [live](https://portfolio-prajwal-mahajan.vercel.app)
 
-<sub>_Feed below is injected nightly from Hashnode RSS; may go stale between writing bursts._</sub>
+<sub>_Feed below is injected nightly from dev.to + Hashnode RSS; may go stale between writing bursts._</sub>
 
 <!-- BLOG-POST-LIST:START -->
 <!-- BLOG-POST-LIST:END -->
