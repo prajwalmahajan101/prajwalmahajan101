@@ -25,6 +25,9 @@ jobs:
           commit_message: "chore: sync latest blog posts"
           template: "- [$title]($url) <sub>· $date</sub>"
           date_format: "mmm d, yyyy"
+          # Don't fail the whole run when one feed hiccups (Hashnode's CDN
+          # occasionally 429s). The other feed still updates the README.
+          disable_errors: true
           # Hashnode's CDN 403s the default "rss-parser" UA. Use a real
           # browser UA so the feed loads. Two retries ride out transient
           # CDN flakes without making the job noisy.
