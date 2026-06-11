@@ -18,7 +18,7 @@ Senior backend engineer (Bengaluru) — distributed fintech, robotics, and AI-in
 > _Cadence: episodic — concentrated weekday-evening sessions (mostly Tue / Fri), not weekends. The public surface ships in bursts; the day job is full-time. Silent stretches mean shipping elsewhere, not stalled._
 
 **Libraries** *(the thesis — everything else consumes these)*
-- [`resilience-kit`](https://github.com/prajwalmahajan101/resilience-kit) — framework-agnostic Python resilience + core-infra kernel · retries, circuit breakers, throttles, cache, SSRF guard, DNS-pinned HTTP client, audit decorators, field crypto · pluggable backends · adapters for Django + FastAPI · first public release candidate ([`v0.1.0rc1`](https://github.com/prajwalmahajan101/resilience-kit/releases/tag/v0.1.0rc1), installable via `pip install --pre resilience-kit`)
+- [`resilience-kit`](https://github.com/prajwalmahajan101/resilience-kit) — framework-agnostic Python resilience + core-infra kernel · retries, circuit breakers, throttles, cache, SSRF guard, DNS-pinned HTTP client, audit decorators, field crypto · pluggable backends · adapters for Django + FastAPI · stable [`v0.1.0`](https://github.com/prajwalmahajan101/resilience-kit/releases/tag/v0.1.0) on PyPI · [write-up on dev.to](https://dev.to/prajwalmahajan101/building-resilience-kit-a-python-resilience-kernel-forged-in-production-5973)
 - [`toymq`](https://github.com/prajwalmahajan101/toymq) — single-node persistent message broker in Go · append-only WAL with CRC framing, per-message fsync, at-least-once delivery, crash recovery · built as a Go learning exercise · [write-up on dev.to](https://dev.to/prajwalmahajan101/building-toymq-a-from-scratch-persistent-message-broker-in-go-ob7)
 
 **Platforms**
