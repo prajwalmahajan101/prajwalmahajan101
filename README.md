@@ -56,8 +56,7 @@ Senior backend engineer (Bengaluru) — distributed fintech, robotics, and AI-in
 
 <sub>_Feed below is injected nightly from dev.to + Hashnode RSS; may go stale between writing bursts._</sub>
 
-<!-- BLOG-POST-LIST:START -->
-<!-- BLOG-POST-LIST:END -->
+<!-- BLOG-POST-LIST:START -->- 📝 **[Building resilience-kit: A Python Resilience Kernel Forged in Production](https://dev.to/prajwalmahajan101/building-resilience-kit-a-python-resilience-kernel-forged-in-production-5973)** <sub>· Jun 11, 2026</sub>- 📝 **[Building toymq: a from-scratch persistent message broker in Go](https://dev.to/prajwalmahajan101/building-toymq-a-from-scratch-persistent-message-broker-in-go-ob7)** <sub>· Jun 9, 2026</sub><!-- BLOG-POST-LIST:END -->
 
 #### Reach me
 
