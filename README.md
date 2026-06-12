@@ -34,8 +34,9 @@ Senior backend engineer (Bengaluru) — distributed fintech, robotics, and AI-in
 - [`django_boilerplate`](https://github.com/prajwalmahajan101/django_boilerplate) — production-shaped Django 6 + DRF starter · consumes `resilience-kit` v0.1.0 · first tagged [`v0.1.0`](https://github.com/prajwalmahajan101/django_boilerplate/releases/tag/v0.1.0) · typed exceptions, structured response envelopes, JWT + OAuth, Valkey throttles, AWS Secrets Manager overlay, Docker
 - [`repay_sync`](https://github.com/prajwalmahajan101/repay_sync) — Django 5 + DRF loan-collection service · audit-logged mutations, agent-officer assignment, call / field-visit interactions with PTP / Refused / Partial dispositions, JWT, MPTT
 
-**Up next** *(public repos forthcoming)*
-- Go distributed-systems track — a 3-node Raft cluster, a multi-DB TUI (Bubble Tea)
+**Up next** *(public repos forthcoming — target Q3 2026)*
+- `tinyraft` — 3-node Raft cluster in Go
+- `dbview` — multi-DB TUI in Bubble Tea
 - Postgres tooling — declarative CHECK / triggers / durable-id idempotency as a Python library
 
 <details>
