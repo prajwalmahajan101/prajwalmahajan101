@@ -13,6 +13,19 @@ Senior backend engineer (Bengaluru) — distributed fintech, robotics, and AI-in
 - **LLM platforms** — RAG pipelines, structured document extraction, Bedrock / Ollama / GPT-4 routing
 - **Security at the lowest layer** — SSRF guards, HMAC + nonce webhooks, Fernet field crypto, fail-closed boot, audit logging
 
+#### How it fits together
+
+```mermaid
+flowchart LR
+    K["<b>resilience-kit</b><br/><sub>kernel</sub>"]
+    K --> C1["django_boilerplate<br/><sub>consumer</sub>"]
+    K --> C2["fastapi_boilerplate<br/><sub>consumer</sub>"]
+    P1["<b>toymq</b> · <b>toykv</b><br/><sub>DS primitives</sub>"]
+    P2["<b>beacon</b><br/><sub>observability platform</sub>"]
+    A1["<b>BookReader</b> · <b>pomban</b><br/><sub>applications</sub>"]
+    A2["repay_sync<br/><sub>domain service</sub>"]
+```
+
 #### Building in public
 
 > _Cadence: episodic — concentrated weekday-evening sessions (mostly Tue / Fri), not weekends. The public surface ships in bursts; the day job is full-time. Silent stretches mean shipping elsewhere, not stalled._
