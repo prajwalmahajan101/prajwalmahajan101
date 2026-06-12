@@ -22,19 +22,17 @@ Senior backend engineer (Bengaluru) — distributed fintech, robotics, and AI-in
 
 **Distributed systems learning track** *(building the bottom of the stack from scratch in Go)*
 - [`toymq`](https://github.com/prajwalmahajan101/toymq) — single-node persistent message broker · append-only WAL with CRC framing, per-message fsync, at-least-once delivery, crash recovery · [`v1.3.0`](https://github.com/prajwalmahajan101/toymq/releases/tag/v1.3.0) adds Prometheus + OpenTelemetry observability · [write-up on dev.to](https://dev.to/prajwalmahajan101/building-toymq-a-from-scratch-persistent-message-broker-in-go-ob7)
-- [`toykv`](https://github.com/prajwalmahajan101/toykv) — single-node in-memory KV store · RESP2 wire protocol, AOF persistence, TTL, CLI + TUI · companion to `toymq` · in active development
+- [`toykv`](https://github.com/prajwalmahajan101/toykv) — single-node in-memory KV store · companion to `toymq` · at milestone [`m4`](https://github.com/prajwalmahajan101/toykv/tree/m4) — RESP2 codec, in-memory store with concurrent-safe INCR, AOF persistence, TTL with lazy + sweep eviction · CLI + TUI next
 
 **Platforms**
-- [`beacon`](https://github.com/prajwalmahajan101/beacon) — self-hosted OpenTelemetry-native observability platform (logs / traces / metrics) · Kafka buffer, polyglot storage (Elasticsearch + wide-column NoSQL + TSDB), React console, Java + Python SDKs · M0 ([`v0.1-m0`](https://github.com/prajwalmahajan101/beacon/releases/tag/v0.1-m0)) freezes the JSON Schema + multi-language conformance suite before any SDK code · Java SDK next
+- [`beacon`](https://github.com/prajwalmahajan101/beacon) — self-hosted OpenTelemetry-native observability platform (logs / traces / metrics) · Kafka buffer, polyglot storage (Elasticsearch + wide-column NoSQL + TSDB), React console, Java + Python SDKs · M0 ([`v0.1-m0`](https://github.com/prajwalmahajan101/beacon/releases/tag/v0.1-m0)) freezes the JSON Schema + multi-language conformance suite before any SDK code · Java SDK in flight (M1.0/M1.1 shipped: Logback appender, OTLP exporter, retry policy, bounded buffer, batch flusher, redactor, canonical-JSON serializer, OTel severity mapper; conformance C1/C12 re-enabled)
 - [`BookReader`](https://github.com/prajwalmahajan101/BookReader) — terminal EPUB reader and personal library (Textual, SQLite-backed) · inline kitty / iTerm2 / WezTerm / sixel images, two-page mode, per-book bookmarks + stats, collections + wishlist · stable [`v1.0.0`](https://github.com/prajwalmahajan101/BookReader/releases/tag/v1.0.0) with a [docs site](https://prajwalmahajan101.github.io/BookReader/) · `pipx install bookreader-tui`
+- [`pomban`](https://github.com/prajwalmahajan101/pomban) — keyboard-driven Pomodoro TUI with kanban board + stats heatmap, themes, hooks, plugins (Textual) · [`v0.3.0`](https://github.com/prajwalmahajan101/pomban/releases/tag/v0.3.0)
 
 **Starters & services**
 - [`fastapi_boilerplate`](https://github.com/prajwalmahajan101/fastapi_boilerplate) — production-shaped FastAPI + async SQLAlchemy starter · consumes `resilience-kit` v0.1.0 · stable [`v1.0.0`](https://github.com/prajwalmahajan101/fastapi_boilerplate/releases/tag/v1.0.0) · Redis-backed resilience, SSRF-safe HTTP, request-id audit log, security middleware, Alembic, Docker
 - [`django_boilerplate`](https://github.com/prajwalmahajan101/django_boilerplate) — production-shaped Django 6 + DRF starter · consumes `resilience-kit` v0.1.0 · first tagged [`v0.1.0`](https://github.com/prajwalmahajan101/django_boilerplate/releases/tag/v0.1.0) · typed exceptions, structured response envelopes, JWT + OAuth, Valkey throttles, AWS Secrets Manager overlay, Docker
 - [`repay_sync`](https://github.com/prajwalmahajan101/repay_sync) — Django 5 + DRF loan-collection service · audit-logged mutations, agent-officer assignment, call / field-visit interactions with PTP / Refused / Partial dispositions, JWT, MPTT
-
-**Terminal tooling**
-- [`pomban`](https://github.com/prajwalmahajan101/pomban) — keyboard-driven Pomodoro TUI with kanban board + stats heatmap, themes, hooks, plugins (Textual) · feature-complete [`v0.1.0`](https://github.com/prajwalmahajan101/pomban/releases/tag/v0.1.0)
 
 **Up next** *(public repos forthcoming)*
 - Go distributed-systems track — a 3-node Raft cluster, a multi-DB TUI (Bubble Tea)
