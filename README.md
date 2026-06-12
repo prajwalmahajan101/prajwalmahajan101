@@ -2,7 +2,7 @@
 
 Senior backend engineer (Bengaluru) — distributed fintech, robotics, and AI-integrated platforms. I build resilience kernels, push correctness invariants into Postgres, and ship LLM-powered services in production.
 
-**Currently** — Lead architect at [Optimo Capitals](https://optimocapital.in/): 8 of 14 internal services shipped in the last 10 months. OptiView dashboard platform, the 5-service co-lending mesh (sole author of 4 of 5 repos), three AWS Lambda services, AA-consent pipeline. Platform-wide since the resilience-kernel rollout: ~65% API-latency cut, ~80% fewer DB queries, 97% → 99.5% uptime.
+**Currently** — Lead architect at [Optimo Capitals](https://optimocapital.in/): 8 of 14 internal services shipped in the last 10 months. OptiView dashboard platform, the 5-service co-lending mesh (sole author of 4 of 5 repos), three AWS Lambda services, AA-consent pipeline. Platform-wide since the resilience-kernel rollout: latency came down hard, DB load came down harder, and uptime moved from "good enough" to "boring" — the shape of the work is open-sourced as [`resilience-kit`](https://github.com/prajwalmahajan101/resilience-kit).
 
 **Previously** — Backend lead at Viamagus on **Quason** (VDA 5050 fleet backbone — 100+ AMRs at ~10k msgs/sec, zero observed message loss in production) and **Synthia** (RAG legal assistant with a Word plugin agent on GPT-4).
 
