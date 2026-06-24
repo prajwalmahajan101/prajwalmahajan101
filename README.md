@@ -68,7 +68,7 @@ flowchart LR
 #### Writing & web
 
 - Long-form at [dev.to/prajwalmahajan101](https://dev.to/prajwalmahajan101) and [prajwalmahajan101.hashnode.dev](https://prajwalmahajan101.hashnode.dev) — backend, distributed systems, AWS · source markdown lives in [`blog-posts`](https://github.com/prajwalmahajan101/blog-posts) (split into `devto/` and `hashnode/`)
-- [`portfolio`](https://github.com/prajwalmahajan101/portfolio) — personal site · [live](https://portfolio-prajwal-mahajan.vercel.app)
+- [`portfolio`](https://github.com/prajwalmahajan101/portfolio) — personal site · [live](https://prajwalmahajan.in)
 
 <sub>_Feed below is injected nightly from dev.to + Hashnode RSS; may go stale between writing bursts._</sub>
 
@@ -80,6 +80,6 @@ flowchart LR
 
 #### Reach me
 
-- Portfolio: https://portfolio-prajwal-mahajan.vercel.app
+- Portfolio: https://prajwalmahajan.in
 - LinkedIn: https://linkedin.com/in/prajwal-mahajan
 - Email: prajwal.mahajan101@gmail.com
