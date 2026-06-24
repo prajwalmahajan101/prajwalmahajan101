@@ -19,36 +19,36 @@ Senior backend engineer (Bengaluru) — distributed fintech, robotics, and AI-in
 
 ```mermaid
 flowchart TB
-    subgraph KERNEL["resilience kernel (the thesis)"]
-        K["<b>resilience-kit</b><br/><sub>PyPI · v0.1.0</sub>"]
+    subgraph KERNEL["resilience kernel — the thesis"]
+        K["resilience-kit<br/>PyPI v0.1.0"]
     end
 
-    subgraph PRIMITIVES["distributed-systems primitives (from-scratch, Go)"]
+    subgraph PRIMITIVES["distributed-systems primitives — from-scratch Go"]
         direction LR
-        P1["<b>toymq</b><br/><sub>broker · v1.3.0</sub>"]
-        P2["<b>toykv</b><br/><sub>KV store · v1.0.0</sub>"]
-        P3["<b>toyraft</b><br/><sub>consensus · in-flight</sub>"]
+        P1["toymq<br/>broker · v1.3.0"]
+        P2["toykv<br/>KV store · v1.0.0"]
+        P3["toyraft<br/>consensus · in-flight"]
     end
 
     subgraph PLATFORMS["platforms"]
-        B["<b>beacon</b><br/><sub>OTel-native observability<br/>Java SDK · p99 6.36 µs</sub>"]
+        B["beacon<br/>OTel observability<br/>Java SDK · p99 6.36µs"]
     end
 
-    subgraph STARTERS["production starters (consume the kernel)"]
+    subgraph STARTERS["production starters — consume the kernel"]
         direction LR
-        C1["<b>django_boilerplate</b><br/><sub>v0.1.0</sub>"]
-        C2["<b>fastapi_boilerplate</b><br/><sub>v1.0.0</sub>"]
+        C1["django_boilerplate<br/>v0.1.0"]
+        C2["fastapi_boilerplate<br/>v1.0.0"]
     end
 
     subgraph APPS["applications & services"]
         direction LR
-        A1["<b>BookReader</b><br/><sub>EPUB TUI · v1.0.0</sub>"]
-        A2["<b>pomban</b><br/><sub>Pomodoro TUI · v0.3.0</sub>"]
-        A3["<b>repay_sync</b><br/><sub>loan-collection backend</sub>"]
+        A1["BookReader<br/>EPUB TUI · v1.0.0"]
+        A2["pomban<br/>Pomodoro TUI · v0.3.0"]
+        A3["repay_sync<br/>loan-collection API"]
     end
 
     subgraph DEVTOOLS["developer tooling"]
-        T1["<b>claude-skills-pack</b><br/><sub>sb · code_assist · unabridged</sub>"]
+        T1["claude-skills-pack<br/>sb · code_assist · unabridged"]
     end
 
     K --> C1
