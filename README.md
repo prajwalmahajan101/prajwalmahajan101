@@ -23,24 +23,33 @@ flowchart TB
         K["resilience-kit<br/>PyPI v0.1.0"]
     end
 
-    subgraph PRIMITIVES["distributed-systems primitives — from-scratch Go"]
-        direction LR
-        P1["toymq<br/>broker · v1.3.0"]
-        P2["toykv<br/>KV store · v1.0.0"]
-        P3["toyraft<br/>consensus · in-flight"]
-    end
-
-    subgraph PLATFORMS["platforms"]
-        B["beacon<br/>OTel observability<br/>Java SDK · p99 6.36µs"]
-    end
-
     subgraph STARTERS["production starters — consume the kernel"]
         direction LR
         C1["django_boilerplate<br/>v0.1.0"]
         C2["fastapi_boilerplate<br/>v1.0.0"]
     end
 
-    subgraph APPS["applications & services"]
+    subgraph TOY["toy universe — from-scratch Go DS stack"]
+        direction TB
+        subgraph TOY_CONSENSUS["consensus layer"]
+            P3["toyraft<br/>Raft · in-flight"]
+            P5["toylock<br/>locks + fencing · planned"]
+        end
+        subgraph TOY_DATA["data plane (single-node today → multi-node via toyraft)"]
+            direction LR
+            P1["toymq<br/>broker · v1.3.0"]
+            P2["toykv<br/>KV store · v1.0.0"]
+        end
+        subgraph TOY_APPS["toy universe apps"]
+            P4["toy-messenger<br/>E2E chat TUI · planned"]
+        end
+    end
+
+    subgraph PLATFORMS["platforms"]
+        B["beacon<br/>OTel observability<br/>Java SDK · p99 6.36µs"]
+    end
+
+    subgraph STANDALONE["standalone apps & services"]
         direction LR
         A1["BookReader<br/>EPUB TUI · v1.0.0"]
         A2["pomban<br/>Pomodoro TUI · v0.3.0"]
@@ -53,17 +62,24 @@ flowchart TB
 
     K --> C1
     K --> C2
-    P1 -.composes.-> APPS
-    P2 -.composes.-> APPS
-    P3 -.feeds future toy-messenger.-> APPS
+
+    P1 -.embeds.-> P3
+    P2 -.embeds.-> P3
+    P5 -.embeds.-> P3
+
+    P1 --> P4
+    P2 --> P4
+    P5 -.optional session locks.-> P4
 
     classDef shipped fill:#1f6f3a,stroke:#0d3a1e,color:#fff;
     classDef active  fill:#b97a00,stroke:#6e4900,color:#fff;
+    classDef planned fill:#374151,stroke:#1f2937,color:#d1d5db,stroke-dasharray: 4 3;
     class K,P1,P2,B,C1,C2,A1,A2,A3,T1 shipped;
     class P3 active;
+    class P4,P5 planned;
 ```
 
-<sub>Green = shipped & stable · amber = in-flight.</sub>
+<sub>Green = shipped & stable · amber = in-flight · dashed grey = planned. Arrows point in the dependency direction — `toymq` / `toykv` / `toylock` each embed `toyraft` as an in-process library (same shape as etcd → etcd-raft). Raft itself serializes writes inside each store, so `toykv` does **not** consume `toylock`; `toylock` is a peer service that *applications* (like `toy-messenger`) call when they need cross-node leases or fencing.</sub>
 
 #### Building in public
 
