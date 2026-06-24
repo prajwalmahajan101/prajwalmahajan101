@@ -60,6 +60,13 @@ flowchart TB
         T1["claude-skills-pack<br/>sb · code_assist · unabridged"]
     end
 
+    subgraph PERSONAL["personal tooling — daily-driver dotfiles"]
+        direction LR
+        T2["nvim_config<br/>LazyVim · ~60ms cold start"]
+        T3["omarchy-abyss-glass<br/>Hyprland dotfiles"]
+        T4["VaultTemplate<br/>Obsidian vault bootstrap"]
+    end
+
     K --> C1
     K --> C2
 
@@ -74,7 +81,7 @@ flowchart TB
     classDef shipped fill:#1f6f3a,stroke:#0d3a1e,color:#fff;
     classDef active  fill:#b97a00,stroke:#6e4900,color:#fff;
     classDef planned fill:#374151,stroke:#1f2937,color:#d1d5db,stroke-dasharray: 4 3;
-    class K,P1,P2,B,C1,C2,A1,A2,A3,T1 shipped;
+    class K,P1,P2,B,C1,C2,A1,A2,A3,T1,T2,T3,T4 shipped;
     class P3 active;
     class P4,P5 planned;
 ```
