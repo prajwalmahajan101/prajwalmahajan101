@@ -139,10 +139,10 @@ flowchart TB
 <sub>_Feed below is injected nightly from dev.to + Hashnode RSS; may go stale between writing bursts._</sub>
 
 <!-- BLOG-POST-LIST:START -->
+- 📝 **[Building toykv v2: seven features that didn&#39;t earn the major, one refusal that did](https://dev.to/prajwalmahajan101/building-toykv-v2-seven-features-that-didnt-earn-the-major-one-refusal-that-did-4jo8)** <sub>· Jul 22, 2026</sub>
 - 📝 **[Building toymq v2: eight features, one durability contract, and the bug that proved it held](https://dev.to/prajwalmahajan101/building-toymq-v2-eight-features-one-durability-contract-and-the-bug-that-proved-it-held-19ff)** <sub>· Jul 13, 2026</sub>
 - 📝 **[Building toykv: a from-scratch persistent KV in Go, and why I took the opposite call from toymq three times](https://dev.to/prajwalmahajan101/building-toykv-a-from-scratch-persistent-kv-in-go-and-why-i-took-the-opposite-call-from-toymq-5862)** <sub>· Jun 17, 2026</sub>
 - 📝 **[Building resilience-kit: A Python Resilience Kernel Forged in Production](https://dev.to/prajwalmahajan101/building-resilience-kit-a-python-resilience-kernel-forged-in-production-5973)** <sub>· Jun 11, 2026</sub>
-- 📝 **[Building toymq: a from-scratch persistent message broker in Go](https://dev.to/prajwalmahajan101/building-toymq-a-from-scratch-persistent-message-broker-in-go-ob7)** <sub>· Jun 9, 2026</sub>
 
 <!-- BLOG-POST-LIST:END -->
 
