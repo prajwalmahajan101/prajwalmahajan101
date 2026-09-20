@@ -2,7 +2,7 @@
 
 Senior backend engineer (Bengaluru) — distributed fintech, robotics, and AI-integrated platforms. I build **resilience kernels**, push correctness invariants into **Postgres**, and ship **LLM-powered services** in production. On the side, I'm rebuilding the bottom of the distributed-systems stack — broker, KV, consensus — from scratch in Go.
 
-> **Track record at a glance** — 8 of 14 internal services shipped in 10 months at a regulated fintech · 100+ AMRs coordinated at ~10k msgs/sec with zero observed message loss · `resilience-kit` v0.2.0 on PyPI (kernel extracted from prod) · `toymq` v2.0 + `toykv` v1.0 + `toyraft` at **`v1.0.0-rc.1`** (consensus from the paper — Phases 1–11, 1000-seed safety invariant) · `beacon` Java + Python SDKs at **p99 = 6,360 ns** per emit · first external OSS PR since 2022 **merged** into [`yorukot/superfile`](https://github.com/yorukot/superfile) (~11k★).
+> **Track record at a glance** — 8 of 14 internal services shipped in 10 months at a regulated fintech · 100+ AMRs coordinated at ~10k msgs/sec with zero observed message loss · `resilience-kit` v0.2.0 on PyPI (kernel extracted from prod) · the distributed keystone loop **shipped**: `toyraft` **`v1.0.0`** (consensus from the paper — all 14 phases, 1000-seed safety invariant, Porcupine linearizability) with `toymq` **`v3.0.0`** + `toykv` **`v3.0.0`** both Raft-distributed and dogfooding it · `beacon` Java + Python SDKs at **p99 = 6,360 ns** per emit · 3 external OSS PRs **merged** into [`yorukot/superfile`](https://github.com/yorukot/superfile) (~11k★, first since 2022).
 
 **Currently** — Lead architect at [Optimo Capitals](https://optimocapital.in/): OptiView dashboard platform, the 5-service co-lending mesh (sole author of 4 of 5 repos), three AWS Lambda services, AA-consent pipeline. Platform-wide since the resilience-kernel rollout: latency came down hard, DB load came down harder, and uptime moved from "good enough" to "boring" — the shape of the work is open-sourced as [`resilience-kit`](https://github.com/prajwalmahajan101/resilience-kit).
 
@@ -32,13 +32,14 @@ flowchart TB
     subgraph TOY["toy universe — from-scratch Go DS stack"]
         direction TB
         subgraph TOY_CONSENSUS["consensus layer"]
-            P3["toyraft<br/>Raft · v1.0.0-rc.1"]
+            P3["toyraft<br/>Raft · v1.0.0"]
             P5["toylock<br/>locks + fencing · planned"]
         end
-        subgraph TOY_DATA["data plane (single-node today → multi-node via toyraft)"]
+        subgraph TOY_DATA["data plane (Raft-distributed via toyraft)"]
             direction LR
-            P1["toymq<br/>broker · v2.0.0"]
-            P2["toykv<br/>KV store · v1.0.0"]
+            P1["toymq<br/>broker · v3.0.0"]
+            P2["toykv<br/>KV store · v3.0.0"]
+            P6["toybloom<br/>Bloom filter · v0.1.0"]
         end
         subgraph TOY_APPS["toy universe apps"]
             P4["toy-messenger<br/>E2E chat TUI · planned"]
@@ -54,6 +55,7 @@ flowchart TB
         A1["BookReader<br/>EPUB TUI · v1.0.0"]
         A2["pomban<br/>Pomodoro TUI · v0.3.0"]
         A3["repay_sync<br/>loan-collection API"]
+        A4["dbview<br/>multi-DB TUI · v1.0.0"]
     end
 
     subgraph DEVTOOLS["developer tooling"]
@@ -81,8 +83,7 @@ flowchart TB
     classDef shipped fill:#1f6f3a,stroke:#0d3a1e,color:#fff;
     classDef active  fill:#b97a00,stroke:#6e4900,color:#fff;
     classDef planned fill:#374151,stroke:#1f2937,color:#d1d5db,stroke-dasharray: 4 3;
-    class K,P1,P2,B,C1,C2,A1,A2,A3,T1,T2,T3,T4 shipped;
-    class P3 active;
+    class K,P1,P2,P3,P6,B,C1,C2,A1,A2,A3,A4,T1,T2,T3,T4 shipped;
     class P4,P5 planned;
 ```
 
@@ -95,15 +96,17 @@ flowchart TB
 **Libraries** *(the thesis — everything else consumes these)*
 - [`resilience-kit`](https://github.com/prajwalmahajan101/resilience-kit) — framework-agnostic Python resilience + core-infra kernel · retries, circuit breakers, throttles, cache, SSRF guard, DNS-pinned HTTP client, audit decorators, field crypto · pluggable backends · adapters for Django + FastAPI · [`v0.2.0`](https://github.com/prajwalmahajan101/resilience-kit/releases/tag/v0.2.0) on PyPI adds Prometheus/OTel/Sentry sinks, a PII redactor, and MultiFernet key rotation · [write-up on dev.to](https://dev.to/prajwalmahajan101/building-resilience-kit-a-python-resilience-kernel-forged-in-production-5973)
 
-**Distributed systems learning track** *(building the bottom of the stack from scratch in Go — broker · KV · consensus)*
-- [`toymq`](https://github.com/prajwalmahajan101/toymq) — single-node persistent message broker · append-only WAL with CRC framing, per-message fsync, at-least-once delivery, crash recovery · [`v2.0.0`](https://github.com/prajwalmahajan101/toymq/releases/tag/v2.0.0) (the "Useful" arc, on top of v1.3.0's Prometheus + OpenTelemetry) · v3.0 (Raft-distributed) builds on `toyraft` next · [write-up on dev.to](https://dev.to/prajwalmahajan101/building-toymq-a-from-scratch-persistent-message-broker-in-go-ob7)
-- [`toykv`](https://github.com/prajwalmahajan101/toykv) — single-node persistent KV store · RESP2 codec, concurrent-safe INCR, AOF persistence with crash recovery, TTL (lazy + sweep) · ships with `toykv-cli` + `toykv-tui` + a chaos harness + goreleaser binaries · stable [`v1.0.0`](https://github.com/prajwalmahajan101/toykv/releases/tag/v1.0.0) · [write-up on dev.to](https://dev.to/prajwalmahajan101/building-toykv-a-from-scratch-persistent-kv-in-go-and-why-i-took-the-opposite-call-from-toymq-5862)
-- [`toyraft`](https://github.com/prajwalmahajan101/toyraft) — Raft consensus from the paper, in Go · spec-first (PRD/HLD/LLD + ADRs before code), deterministic test infra (`Fake` clock + `inproc` chaos transport with drop/delay/reorder/partition + seed-split RNG), Figure 7 election-timeout table-driven test, **1000-seed at-most-one-leader-per-term invariant** · **Phases 1–11 closed** (election, replication, library API, fsynced file storage + torn-tail recovery, HTTP transport, reference demo, seeded chaos) · **[`v1.0.0-rc.1`](https://github.com/prajwalmahajan101/toyraft/releases/tag/v1.0.0-rc.1) cut** — the stable-library gate; `v1.0.0` GA follows once `toymq` v3 + `toykv` v3 dogfood it (plus the Porcupine linearizability gate)
+**Distributed systems learning track** *(building the bottom of the stack from scratch in Go — broker · KV · consensus · Bloom filter)*
+- [`toyraft`](https://github.com/prajwalmahajan101/toyraft) — Raft consensus from the paper, in Go · spec-first (PRD/HLD/LLD + ADRs before code), deterministic test infra (`Fake` clock + `inproc` chaos transport with drop/delay/reorder/partition + seed-split RNG), Figure 7 election-timeout table-driven test, **1000-seed at-most-one-leader-per-term invariant** · **all 14 phases closed** (election, replication, library API, fsynced file storage + torn-tail recovery, HTTP transport, reference demo, seeded chaos, Porcupine linearizability, netns chaos, observability/GoReleaser) · **[`v1.0.0`](https://github.com/prajwalmahajan101/toyraft/releases/tag/v1.0.0) FINAL** — GA'd once `toymq` v3 + `toykv` v3 dogfooded the rc and filed their migration reports
+- [`toymq`](https://github.com/prajwalmahajan101/toymq) — persistent message broker · append-only WAL with CRC framing, per-message fsync, at-least-once delivery, crash recovery · **[`v3.0.0`](https://github.com/prajwalmahajan101/toymq/releases/tag/v3.0.0) Raft-distributed** — embeds `toyraft`, quorum acks + `PUB…WAIT` barrier, `NOTLEADER` redirect + `ClusterClient`, static `--peers` 3-node cluster, Porcupine linearizability on partition-heal (on top of v2.0.0's "Useful" arc) · [write-up on dev.to](https://dev.to/prajwalmahajan101/building-toymq-a-from-scratch-persistent-message-broker-in-go-ob7)
+- [`toykv`](https://github.com/prajwalmahajan101/toykv) — persistent KV store · RESP3 codec, concurrent-safe INCR, list/hash + AOF, TTL (lazy + sweep), AUTH+TLS · ships with `toykv-cli` + `toykv-tui` + a chaos harness + goreleaser binaries · **[`v3.0.0`](https://github.com/prajwalmahajan101/toykv/releases/tag/v3.0.0) Raft-distributed** — embeds `toyraft`, quorum R/W, leader-redirecting `ClusterClient`, 3-node ITs (on top of v2.0.0's RESP3/TUI v2/OTel→LGTM) · [write-up on dev.to](https://dev.to/prajwalmahajan101/building-toykv-a-from-scratch-persistent-kv-in-go-and-why-i-took-the-opposite-call-from-toymq-5862)
+- [`toybloom`](https://github.com/prajwalmahajan101/toybloom) — from-scratch Bloom filter in Go · [`v0.1.0`](https://github.com/prajwalmahajan101/toybloom/releases/tag/v0.1.0) (M0–M10, v0.1 DoD met, CI green) · scalable chaining + Valkey `BitStore` + Gin REST/OTel on the post-v0.1 arc
 
 **Platforms**
 - [`beacon`](https://github.com/prajwalmahajan101/beacon) — self-hosted OpenTelemetry-native observability platform (logs / traces / metrics) · Kafka buffer, polyglot storage (Elasticsearch + wide-column NoSQL + TSDB), React console, Java + Python SDKs · spec-first: JSON Schema + multi-language conformance suite frozen at [`v0.1-m0`](https://github.com/prajwalmahajan101/beacon/releases/tag/v0.1-m0) **before any SDK code shipped** · **Java + Python SDKs both released** (`v0.3-m2` / `v1.0-rc-sdk`) with Java↔Python byte-parity conformance green · production `BeaconLogbackAppender` + Spring Boot auto-config + ReDoS-resistant redactor + OTel Context/MDC propagation + **JMH benchmark: p99 = 6,360 ns per emit** · platform storage tier next
 - [`BookReader`](https://github.com/prajwalmahajan101/BookReader) — terminal EPUB reader and personal library (Textual, SQLite-backed) · inline kitty / iTerm2 / WezTerm / sixel images, two-page mode, per-book bookmarks + stats, collections + wishlist · stable [`v1.0.0`](https://github.com/prajwalmahajan101/BookReader/releases/tag/v1.0.0) with a [docs site](https://prajwalmahajan101.github.io/BookReader/) · `pipx install bookreader-tui`
 - [`pomban`](https://github.com/prajwalmahajan101/pomban) — keyboard-driven Pomodoro TUI with kanban board + stats heatmap, themes, hooks, plugins (Textual) · [`v0.3.0`](https://github.com/prajwalmahajan101/pomban/releases/tag/v0.3.0)
+- [`dbview`](https://github.com/prajwalmahajan101/dbview) — multi-DB terminal browser + query tool (Bubble Tea) · PostgreSQL + MySQL + SQLite behind one no-CGO static binary · query editor, write-safety, paren matcher, export, row edit/delete, prefetching pagination · stable [`v1.0.0`](https://github.com/prajwalmahajan101/dbview/releases/tag/v1.0.0) with GoReleaser binaries
 
 **Starters & services**
 - [`fastapi_boilerplate`](https://github.com/prajwalmahajan101/fastapi_boilerplate) — production-shaped FastAPI + async SQLAlchemy starter · consumes `resilience-kit` · stable [`v1.1.0`](https://github.com/prajwalmahajan101/fastapi_boilerplate/releases/tag/v1.1.0) · Redis-backed resilience, SSRF-safe HTTP, request-id audit log, security middleware, Alembic, Docker
@@ -114,9 +117,10 @@ flowchart TB
 - [`claude-skills-pack`](https://github.com/prajwalmahajan101/claude-skills-pack) — bundle of three [Claude Code](https://claude.com/claude-code) skills, each independently installable · **sb** (persistent second-brain — captures Claude Code conversations into an Obsidian vault, analyzes them into lessons / kanban / topics / cross-project connections; 22 `/sb:*` commands, 5 hooks) · **code_assist** (atomic git commits, stack-aware code reviews, phase-journal entries; 7 commands, 3 subagents) · **unabridged** (forces complete, untruncated output)
 
 **Open source**
-- [`yorukot/superfile`](https://github.com/yorukot/superfile) (~11k★ Go TUI file manager) — [PR #1509](https://github.com/yorukot/superfile/pull/1509) *"fix(preview): expand tabs to next tab stop"* **merged upstream**; two more open ([#1518](https://github.com/yorukot/superfile/pull/1518), [#1519](https://github.com/yorukot/superfile/pull/1519)) on panel-focus behavior
+- [`yorukot/superfile`](https://github.com/yorukot/superfile) (~11k★ Go TUI file manager) — **3 PRs merged upstream** (first external OSS PRs since 2022): [#1509](https://github.com/yorukot/superfile/pull/1509) *"fix(preview): expand tabs to next tab stop"*, [#1518](https://github.com/yorukot/superfile/pull/1518) *"keep focus on the new panel"*, [#1519](https://github.com/yorukot/superfile/pull/1519) *"page up/down aware of the focused panel"*
 
-**Up next** *(public repos forthcoming — target Q3 2026)*
+**Up next** *(public repos forthcoming — target Q4 2026)*
+- [`busy-api`](https://github.com/prajwalmahajan101/busy-api) *(building now)* — DB-backed Go/Gin read API scaled 1 → 100K req/s, one bottleneck per rung with a before/after k6 logbook (pgx/sqlc · Valkey · OTel)
 - `go_boilerplate` — production-shaped Go REST starter; closes the boilerplate trio (Django · FastAPI · Go)
 - `toylock` — distributed lock service on `toyraft` (leases + fencing tokens + watches); proves the Raft layer in anger
 - `toy-messenger` — TUI-only E2E-encrypted chat composing toymq + toykv into one user-facing artifact
