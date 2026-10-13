@@ -1,0 +1,132 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 840 520" role="img" aria-labelledby="arch-dark-title arch-dark-desc" font-family="-apple-system, BlinkMacSystemFont, 'Segoe UI', Helvetica, Arial, sans-serif">
+  <title id="arch-dark-title">Public portfolio — how the projects connect</title>
+  <desc id="arch-dark-desc">Architecture diagram showing dependency relationships between public projects: resilience-kit feeds the three boilerplates, toyraft is embedded by toymq/toykv/toylock, toy-messenger composes toymq+toykv+toylock, beacon and the standalone apps are independent.</desc>
+
+  <defs>
+    <marker id="d-arrow" markerWidth="7" markerHeight="5" refX="6" refY="2.5" orient="auto">
+      <polygon points="0 0, 7 2.5, 0 5" fill="#8b949e"/>
+    </marker>
+    <marker id="d-arrow-accent" markerWidth="7" markerHeight="5" refX="6" refY="2.5" orient="auto">
+      <polygon points="0 0, 7 2.5, 0 5" fill="#eb6c36"/>
+    </marker>
+    <marker id="d-arrow-embed" markerWidth="7" markerHeight="5" refX="6" refY="2.5" orient="auto">
+      <polygon points="0 0, 7 2.5, 0 5" fill="#58a6ff"/>
+    </marker>
+  </defs>
+
+  <rect width="960" height="520" fill="#0d1117"/>
+
+  <!-- title -->
+  <text x="40" y="36" font-family="Georgia, 'Times New Roman', serif" font-size="20" fill="#e6edf3">How the projects connect</text>
+  <text x="40" y="52" font-family="ui-monospace, 'SF Mono', Menlo, Consolas, monospace" font-size="9" letter-spacing="0.1em" fill="#6e7681">PUBLIC REPOS ONLY — DEPENDENCY &amp; EMBEDDING RELATIONSHIPS</text>
+
+  <!-- ════════ RESILIENCE ECOSYSTEM (left) ════════ -->
+  <!-- resilience-kit -->
+  <rect x="40" y="100" width="168" height="40" rx="6" fill="#11301d" stroke="#238636"/>
+  <text x="56" y="117" font-size="12" font-weight="600" fill="#e6edf3">resilience-kit</text>
+  <text x="56" y="131" font-family="ui-monospace, 'SF Mono', Menlo, Consolas, monospace" font-size="9" fill="#8b949e">PyPI v0.2.0 · Python</text>
+
+  <!-- arrows: resilience-kit → boilerplates -->
+  <line x1="124" y1="140" x2="60" y2="180" stroke="#8b949e" stroke-width="1" marker-end="url(#d-arrow)"/>
+  <line x1="124" y1="140" x2="160" y2="180" stroke="#8b949e" stroke-width="1" marker-end="url(#d-arrow)"/>
+  <line x1="124" y1="140" x2="260" y2="180" stroke="#8b949e" stroke-width="1" marker-end="url(#d-arrow)"/>
+
+  <!-- django_boilerplate -->
+  <rect x="8" y="184" width="120" height="36" rx="6" fill="#161b22" stroke="#30363d"/>
+  <text x="20" y="200" font-size="11" font-weight="600" fill="#e6edf3">django_bp</text>
+  <text x="20" y="212" font-family="ui-monospace, 'SF Mono', Menlo, Consolas, monospace" font-size="8" fill="#8b949e">v1.0.0</text>
+
+  <!-- fastapi_boilerplate -->
+  <rect x="140" y="184" width="120" height="36" rx="6" fill="#161b22" stroke="#30363d"/>
+  <text x="152" y="200" font-size="11" font-weight="600" fill="#e6edf3">fastapi_bp</text>
+  <text x="152" y="212" font-family="ui-monospace, 'SF Mono', Menlo, Consolas, monospace" font-size="8" fill="#8b949e">v1.1.0</text>
+
+  <!-- gin_boilerplate -->
+  <rect x="272" y="184" width="120" height="36" rx="6" fill="#161b22" stroke="#30363d"/>
+  <text x="284" y="200" font-size="11" font-weight="600" fill="#e6edf3">gin_bp</text>
+  <text x="284" y="212" font-family="ui-monospace, 'SF Mono', Menlo, Consolas, monospace" font-size="8" fill="#8b949e">v0.1.0 · Go</text>
+
+  <!-- label -->
+  <rect x="40" y="237" width="72" height="14" rx="2" fill="#0d1117"/>
+  <text x="44" y="248" font-family="ui-monospace, 'SF Mono', Menlo, Consolas, monospace" font-size="8" letter-spacing="0.06em" fill="#8b949e">CONSUMES</text>
+
+  <!-- ════════ TOY UNIVERSE (center-right) ════════ -->
+  <!-- toyraft — keystone -->
+  <rect x="480" y="100" width="160" height="44" rx="6" fill="#2a1a12" stroke="#eb6c36" stroke-width="1.2"/>
+  <text x="496" y="119" font-size="13" font-weight="600" fill="#ffb892">toyraft</text>
+  <text x="496" y="135" font-family="ui-monospace, 'SF Mono', Menlo, Consolas, monospace" font-size="9" fill="#8b949e">Raft consensus · v1.0.0</text>
+
+  <!-- embed arrows: toyraft → toymq, toykv, toylock -->
+  <line x1="520" y1="144" x2="480" y2="200" stroke="#58a6ff" stroke-width="1" stroke-dasharray="5,3" marker-end="url(#d-arrow-embed)"/>
+  <line x1="560" y1="144" x2="600" y2="200" stroke="#58a6ff" stroke-width="1" stroke-dasharray="5,3" marker-end="url(#d-arrow-embed)"/>
+
+  <!-- embed label -->
+  <rect x="592" y="160" width="64" height="14" rx="2" fill="#0d1117"/>
+  <text x="596" y="171" font-family="ui-monospace, 'SF Mono', Menlo, Consolas, monospace" font-size="8" letter-spacing="0.06em" fill="#58a6ff">EMBEDS ▸</text>
+
+  <!-- toymq -->
+  <rect x="424" y="204" width="120" height="40" rx="6" fill="#11301d" stroke="#238636"/>
+  <text x="440" y="221" font-size="12" font-weight="600" fill="#e6edf3">toymq</text>
+  <text x="440" y="235" font-family="ui-monospace, 'SF Mono', Menlo, Consolas, monospace" font-size="9" fill="#8b949e">broker · v3.0.0</text>
+
+  <!-- toykv -->
+  <rect x="556" y="204" width="120" height="40" rx="6" fill="#11301d" stroke="#238636"/>
+  <text x="572" y="221" font-size="12" font-weight="600" fill="#e6edf3">toykv</text>
+  <text x="572" y="235" font-family="ui-monospace, 'SF Mono', Menlo, Consolas, monospace" font-size="9" fill="#8b949e">KV store · v3.0.0</text>
+
+
+  <!-- toybloom (standalone, no dependency) -->
+  <rect x="832" y="100" width="108" height="40" rx="6" fill="#11301d" stroke="#238636"/>
+  <text x="848" y="117" font-size="12" font-weight="600" fill="#e6edf3">toybloom</text>
+  <text x="848" y="131" font-family="ui-monospace, 'SF Mono', Menlo, Consolas, monospace" font-size="9" fill="#8b949e">Bloom · v0.1.0</text>
+
+
+  <!-- ════════ STANDALONE (bottom) ════════ -->
+  <line x1="40" y1="380" x2="920" y2="380" stroke="#30363d" stroke-width="0.8"/>
+  <text x="40" y="400" font-family="ui-monospace, 'SF Mono', Menlo, Consolas, monospace" font-size="9" letter-spacing="0.1em" fill="#6e7681">STANDALONE — NO CROSS-PROJECT DEPENDENCIES</text>
+
+  <!-- beacon -->
+  <rect x="40" y="416" width="148" height="40" rx="6" fill="#2b2411" stroke="#9e6a03"/>
+  <text x="56" y="433" font-size="12" font-weight="600" fill="#e6edf3">beacon</text>
+  <text x="56" y="447" font-family="ui-monospace, 'SF Mono', Menlo, Consolas, monospace" font-size="9" fill="#8b949e">OTel · Java+Python</text>
+
+  <!-- BookReader -->
+  <rect x="204" y="416" width="108" height="40" rx="6" fill="#11301d" stroke="#238636"/>
+  <text x="216" y="433" font-size="11" font-weight="600" fill="#e6edf3">BookReader</text>
+  <text x="216" y="447" font-family="ui-monospace, 'SF Mono', Menlo, Consolas, monospace" font-size="9" fill="#8b949e">TUI · v1.0.0</text>
+
+  <!-- dbview -->
+  <rect x="328" y="416" width="92" height="40" rx="6" fill="#11301d" stroke="#238636"/>
+  <text x="340" y="433" font-size="11" font-weight="600" fill="#e6edf3">dbview</text>
+  <text x="340" y="447" font-family="ui-monospace, 'SF Mono', Menlo, Consolas, monospace" font-size="9" fill="#8b949e">TUI · v1.0.0</text>
+
+  <!-- pomban -->
+  <rect x="436" y="416" width="92" height="40" rx="6" fill="#11301d" stroke="#238636"/>
+  <text x="448" y="433" font-size="11" font-weight="600" fill="#e6edf3">pomban</text>
+  <text x="448" y="447" font-family="ui-monospace, 'SF Mono', Menlo, Consolas, monospace" font-size="9" fill="#8b949e">TUI · v0.3.0</text>
+
+  <!-- hookrunner -->
+  <rect x="544" y="416" width="112" height="40" rx="6" fill="#11301d" stroke="#238636"/>
+  <text x="556" y="433" font-size="11" font-weight="600" fill="#e6edf3">hookrunner</text>
+  <text x="556" y="447" font-family="ui-monospace, 'SF Mono', Menlo, Consolas, monospace" font-size="9" fill="#8b949e">CLI · v0.1.0</text>
+
+  <!-- busy-api -->
+  <rect x="672" y="416" width="120" height="40" rx="6" fill="#2b2411" stroke="#9e6a03"/>
+  <text x="684" y="433" font-size="11" font-weight="600" fill="#e6edf3">busy-api</text>
+  <text x="684" y="447" font-family="ui-monospace, 'SF Mono', Menlo, Consolas, monospace" font-size="9" fill="#8b949e">1→100K · building</text>
+
+
+  <!-- legend -->
+  <line x1="40" y1="480" x2="920" y2="480" stroke="#30363d" stroke-width="0.8"/>
+  <rect x="40" y="494" width="11" height="11" rx="2" fill="#11301d" stroke="#238636"/>
+  <text x="58" y="503" font-family="ui-monospace, 'SF Mono', Menlo, Consolas, monospace" font-size="9" fill="#8b949e">shipped</text>
+  <rect x="128" y="494" width="11" height="11" rx="2" fill="#2b2411" stroke="#9e6a03"/>
+  <text x="146" y="503" font-family="ui-monospace, 'SF Mono', Menlo, Consolas, monospace" font-size="9" fill="#8b949e">in flight</text>
+  <rect x="216" y="494" width="11" height="11" rx="2" fill="#2a1a12" stroke="#eb6c36"/>
+  <text x="234" y="503" font-family="ui-monospace, 'SF Mono', Menlo, Consolas, monospace" font-size="9" fill="#8b949e">keystone</text>
+
+  <line x1="320" y1="500" x2="356" y2="500" stroke="#8b949e" stroke-width="1" marker-end="url(#d-arrow)"/>
+  <text x="364" y="503" font-family="ui-monospace, 'SF Mono', Menlo, Consolas, monospace" font-size="9" fill="#8b949e">consumes</text>
+  <line x1="460" y1="500" x2="496" y2="500" stroke="#58a6ff" stroke-width="1" stroke-dasharray="5,3" marker-end="url(#d-arrow-embed)"/>
+  <text x="684" y="503" font-family="ui-monospace, 'SF Mono', Menlo, Consolas, monospace" font-size="9" fill="#8b949e">embeds as library</text>
+</svg>
