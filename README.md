@@ -110,6 +110,13 @@
 
 <br>
 
+<picture>
+  <source media="(prefers-color-scheme: dark)" srcset="assets/architecture-dark.svg">
+  <img alt="Architecture diagram showing how public projects connect: resilience-kit feeds three boilerplates, toyraft is embedded by toymq and toykv, standalone apps have no cross-project dependencies." src="assets/architecture-light.svg" width="100%">
+</picture>
+
+<br>
+
 ```mermaid
 flowchart TB
     subgraph KERNEL["resilience kernel — the thesis"]
