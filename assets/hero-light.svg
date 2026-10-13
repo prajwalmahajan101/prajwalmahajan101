@@ -20,8 +20,8 @@
   <text x="60" y="194" font-family="ui-monospace, 'SF Mono', Menlo, Consolas, monospace" font-size="25" font-weight="600" fill="#eb6c36">v1.0.0</text>
   <text x="60" y="212" font-family="ui-monospace, 'SF Mono', Menlo, Consolas, monospace" font-size="9" letter-spacing="0.1em" fill="#656d76">TOYRAFT KEYSTONE — SHIPPED</text>
 
-  <text x="336" y="194" font-family="ui-monospace, 'SF Mono', Menlo, Consolas, monospace" font-size="25" font-weight="600" fill="#1f2328">10K<tspan font-size="14" fill="#656d76"> msg/s</tspan></text>
-  <text x="336" y="212" font-family="ui-monospace, 'SF Mono', Menlo, Consolas, monospace" font-size="9" letter-spacing="0.1em" fill="#656d76">100+ AMRs · ZERO MSG LOSS</text>
+  <text x="336" y="194" font-family="ui-monospace, 'SF Mono', Menlo, Consolas, monospace" font-size="25" font-weight="600" fill="#1f2328">25K<tspan font-size="14" fill="#656d76"> req/s</tspan></text>
+  <text x="336" y="212" font-family="ui-monospace, 'SF Mono', Menlo, Consolas, monospace" font-size="9" letter-spacing="0.1em" fill="#656d76">BUSY-API · p95 7.4ms · 126× GAIN</text>
 
   <text x="612" y="194" font-family="ui-monospace, 'SF Mono', Menlo, Consolas, monospace" font-size="25" font-weight="600" fill="#1f2328">6,360<tspan font-size="14" fill="#656d76"> ns</tspan></text>
   <text x="612" y="212" font-family="ui-monospace, 'SF Mono', Menlo, Consolas, monospace" font-size="9" letter-spacing="0.1em" fill="#656d76">BEACON p99 PER EMIT</text>
