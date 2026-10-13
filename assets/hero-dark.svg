@@ -27,7 +27,7 @@
   <text x="612" y="212" font-family="ui-monospace, 'SF Mono', Menlo, Consolas, monospace" font-size="9" letter-spacing="0.1em" fill="#8b949e">BEACON p99 PER EMIT</text>
 
   <text x="888" y="194" font-family="ui-monospace, 'SF Mono', Menlo, Consolas, monospace" font-size="25" font-weight="600" fill="#e6edf3">3<tspan font-size="14" fill="#8b949e"> PRs</tspan></text>
-  <text x="888" y="212" font-family="ui-monospace, 'SF Mono', Menlo, Consolas, monospace" font-size="9" letter-spacing="0.1em" fill="#8b949e">MERGED UPSTREAM · 11K★ REPO</text>
+  <text x="888" y="212" font-family="ui-monospace, 'SF Mono', Menlo, Consolas, monospace" font-size="9" letter-spacing="0.1em" fill="#8b949e">MERGED INTO SUPERFILE · 11K★</text>
 
   <!-- ===== layered map ===== -->
   <!-- Row 1: resilience kernel -->
